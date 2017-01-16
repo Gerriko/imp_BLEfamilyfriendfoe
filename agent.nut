@@ -1,3 +1,8 @@
+/* This code copyright protected (c) 2017 Gerriko IoT ------------------------*/
+/* Developed by Colin Gerrish (Gerriko IoT) ----------------------------------*/
+/* This file is licensed under the MIT License -------------------------------*/
+/* http://opensource.org/licenses/MIT ----------------------------------------*/
+
 const FRIENDSTARTHOURS = 9;         //9am
 const FRIENDENDHOURS = 21;         //9pm
 
