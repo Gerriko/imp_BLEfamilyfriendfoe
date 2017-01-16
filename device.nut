@@ -34,7 +34,6 @@ function BLE_UARTcallbackfnc() {
     BLEstr = strip(BLEstr);
     local BLEstrLen = BLEstr.len();
     if (BLEstrLen) {
-        //server.log("BLE resp: " + BLEstr);
         if (BLEstrLen < 6) {
             if (BLEstr == "OK") {
                 BLEon = true;
@@ -45,7 +44,6 @@ function BLE_UARTcallbackfnc() {
             local BLEindex = BLEstr.find("+ADDR");
             if (BLEindex != null) {
                 BLEmac = BLEstr.slice(BLEindex+6);
-                //server.log("BLE MAC: " + BLEmac);
                 if (BLEmac.len()) {
                     imp.sleep(0.1);
                     UART.write("AT+NAME?");
@@ -54,7 +52,6 @@ function BLE_UARTcallbackfnc() {
             BLEindex = BLEstr.find("+NAME");
             if (BLEindex != null) {
                 BLEname = BLEstr.slice(BLEindex+6,BLEstr.len()-1);
-                //server.log("BLE Name: " + BLEname);
                 agent.send("BLEinfo", {"bMAC":BLEmac, "bNME":BLEname});
             }
         }
@@ -170,7 +167,6 @@ function changeAlarmingStatus() {
 function DeviceNowOn() {
     imp.wakeup(1, function() {
         agent.send("PingHQ", {"bST":hardware.millis(), "bWR": hardware.wakereason()});
-        //getWIFIdetails();
         imp.sleep(0.1);
         server.log("PIR ini state: " + PIR.read());
         UART.write("AT");
